@@ -56,57 +56,67 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+            <div id="value"></div>
             <form
+              id="form"
               name="reserve"
               action="index.html"
-              method="get"
-              onsubmit="return validate();"
+              method="post"
+              onsubmit=" return validate(e)"
             >
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label id="firstName-label" for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
+                  
+                  
                 /><br>
+                <p id="errorFirstName" class=errorMessage></p>
+              
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label id="lastName-label" for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                  
+                /><br><p id="errorLastName" class=errorMessage></p>
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label id="email-label" for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label id="birthdate-label" for="birthdate"Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                  
+                  
+                /><p id="errorBirthDate" class=errorMessage></p><br>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <label id="quantity-label" for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -117,6 +127,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -128,6 +139,7 @@
                   id="location2"
                   name="location"
                   value="San Francisco"
+                  
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
@@ -139,6 +151,7 @@
                   id="location3"
                   name="location"
                   value="Seattle"
+                  
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
@@ -150,6 +163,7 @@
                   id="location4"
                   name="location"
                   value="Chicago"
+                  
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
@@ -161,6 +175,7 @@
                   id="location5"
                   name="location"
                   value="Boston"
+                  
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
@@ -172,6 +187,7 @@
                   id="location6"
                   name="location"
                   value="Portland"
+                  
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
@@ -191,6 +207,7 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <p id="errorCheckbox1"></p>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
@@ -215,6 +232,8 @@
         Copyright 2014 - 2021, GameOn Inc.
       </p>
     </footer>
+    <script  type="module" src="./entity/ValidateClass.js"></script>
     <script src="modal.js"></script>
+    
   </body>
 </html>
