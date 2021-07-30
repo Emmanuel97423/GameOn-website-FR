@@ -1,4 +1,4 @@
-export default  ValidateClass {
+export default class ValidateClass {
   contructor(form) {
     this.form = form;
   }
