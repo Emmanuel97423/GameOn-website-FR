@@ -65,7 +65,7 @@
               onsubmit=" return validate(e)"
             >
               <div
-                class="formData">
+                class="formData" data-error-visible="true" >
                 <label id="firstName-label" for="first">Prénom</label><br>
                 <input
                   class="text-control"
@@ -73,11 +73,13 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
+                 
+                  
                   
                   
                 /><br>
-                <p id="errorFirstName" class=errorMessage></p>
-              
+                <p id="errorFirstName" class="errorMessage "  ></p>
               </div>
               <div
                 class="formData">
@@ -87,6 +89,8 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  required
                   
                 /><br><p id="errorLastName" class=errorMessage></p>
               </div>
@@ -99,7 +103,7 @@
                   id="email"
                   name="email"
                   required
-                /><br>
+                /><br><p id="errorEmail" class=errorMessage></p>
               </div>
               <div
                 class="formData">
@@ -109,6 +113,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                   
                   
                 /><p id="errorBirthDate" class=errorMessage></p><br>
@@ -198,16 +203,21 @@
               <div
                 class="formData">
                 <input
+                name="checkbox1"
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  required
+                  
+                  
+                  
+                  
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <p id="errorCheckbox1"></p>
+                <p id="errorCheckbox1" class="errorMessage"></p>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
@@ -232,8 +242,8 @@
         Copyright 2014 - 2021, GameOn Inc.
       </p>
     </footer>
-    <script  type="module" src="./entity/ValidateClass.js"></script>
-    <script src="modal.js"></script>
+    
+    <script src="modal.js" type="module"></script>
     
   </body>
 </html>
