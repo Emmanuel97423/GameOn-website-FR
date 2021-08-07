@@ -12,15 +12,22 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById("form");
+const valueSuccess = document.getElementById("value");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalClose.forEach((close) => close.addEventListener("click", closeModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+}
+//Close modal form
+function closeModal() {
+  modalbg.style.display = "none";
 }
 //ecoute du form
 formData.forEach((input) => input.addEventListener("input", launchForm));
@@ -33,57 +40,48 @@ function launchForm(e) {
   const errorBirthday = document.getElementById("errorBirthDate");
   const errorCheckbox1 = document.getElementById("errorCheckbox1");
 
-  //let cguChecked = document.getElementById("checkbox1");
-
-  //FormData
-  // const myForm = new FormData(form);
-  // const firstName = myForm.get("first");
-  // const lastName = myForm.get("last");
-  // const email = myForm.get("email");
-  // const birthday = myForm.get("birthdate");
-  // const quantity = myForm.get("quantity");
-  // const country = myForm.get("location");
-
+  //Utilisation de formData
   let validate = new ValidateClass();
-  const formData = new FormData(form);
-  formData.forEach((value, key) => {
+  const formDataLaunch = new FormData(form);
+  formDataLaunch.forEach((value, key) => {
     validate[key] = value.trim();
   });
-
-  //const cgu = cguChecked.checked;
-
-  //Validate Class
-  // const validate = new ValidateClass(
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   birthday,
-  //   quantity,
-  //   country,
-  //   cgu
-  // );
-
-  errorLastName.textContent = validate.validateLastName;
-  errorFirstName.textContent = validate.validateFirstName;
-  errorEmail.textContent = validate.validateEmail;
-  errorBirthday.textContent = validate.validateBirthday;
-  errorCheckbox1.textContent = validate.validateCgu;
+  // formData.forEach((input) => {
+  //   if ((validate.validate = "")) {
+  //     input.setAttribute("data-error-visible", "true");
+  //   }
+  // });
   console.log(validate);
-  //Tournoi participé
+
+  //Message d'erreur
+  errorLastName.textContent = validate.validateLastName;
+  errorLastName.style.color = "red";
+  errorFirstName.textContent = validate.validateFirstName;
+  errorFirstName.style.color = "red";
+  errorEmail.textContent = validate.validateEmail;
+  errorEmail.style.color = "red";
+  errorBirthday.textContent = validate.validateBirthday;
+  errorBirthday.style.color = "red";
+  errorCheckbox1.textContent = validate.validateCgu;
+  errorCheckbox1.style.color = "red";
 }
 // launch validate
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let validateSubmit = new ValidateClass(form);
-  const formData = new FormData(form);
-  formData.forEach((value, key) => {
+  const formDataSubmit = new FormData(form);
+  formDataSubmit.forEach((value, key) => {
     validateSubmit[key] = value.trim();
     if ((validateSubmit.validate = false)) {
       formData.setAttribute("data-error-visible", true);
+    } else {
+      form.style.display = "none";
+      valueSuccess.innerHTML = `<div style=height:auto; text-align:center>
+      <p>Fomulaire envoyé!</p>
+      <button class="btn-signup modal-btn" >Fermer</button>
+      </div>`;
     }
   });
-  alert("Formulaire soumis avec succée");
-  window.open("https://www.w3schools.com");
 });
 
-function validate(e) {}
+// function validate(e) {}

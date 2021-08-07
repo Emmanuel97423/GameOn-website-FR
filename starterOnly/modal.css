@@ -102,6 +102,7 @@ img {
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
+    color: red;
   }
   .topnav a.icon {
     float: right;
@@ -214,6 +215,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -232,12 +234,15 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+input:required:invalid {
+  border-color: #c00000;
+}
 
-input[data-error]::after {
+/* input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: red;
-}
+} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;

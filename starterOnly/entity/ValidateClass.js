@@ -6,8 +6,8 @@ export default class ValidateClass {
     birthdate,
     quantity,
     location,
-    checkbox1,
-    validate
+    validate,
+    checkbox1
   ) {
     this.first = first;
     this.last = last;
@@ -86,5 +86,8 @@ export default class ValidateClass {
     } else {
       this.validate = true;
     }
+  }
+  validate() {
+    return false;
   }
 }
