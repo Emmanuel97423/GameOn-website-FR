@@ -13,6 +13,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelectorAll(".close");
+const modalCloseSuccess = document.getElementById("close");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById("form");
 const valueSuccess = document.getElementById("value");
@@ -75,7 +76,7 @@ form.addEventListener("submit", (e) => {
       form.style.display = "none";
       valueSuccess.innerHTML = `<div  text-align:center>
       <p>Fomulaire envoyé!</p>
-      <button class="btn-signup modal-btn" >Fermer</button>
+      
       </div>`;
     }
   });

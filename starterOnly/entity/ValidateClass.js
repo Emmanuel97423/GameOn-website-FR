@@ -88,13 +88,20 @@ export default class ValidateClass {
     }
   }
   checkQuantity() {
-    if (this.quantity >= 1) {
+    if (this.quantity >= 1 && !this.location) {
+      const locationValidate = document.querySelectorAll(".input-location");
+      locationValidate.forEach((input) => {
+        input.required = true;
+      });
       this.validate = false;
       return "Veuillez choisir une option";
     } else {
       this.validate = true;
+
+      return null;
     }
   }
+
   validate() {
     return false;
   }
