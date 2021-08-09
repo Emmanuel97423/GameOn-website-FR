@@ -29,7 +29,7 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
-//ecoute du form
+//Listener form
 formData.forEach((input) => input.addEventListener("input", launchForm));
 
 //Launch function
@@ -39,6 +39,7 @@ function launchForm(e) {
   const errorEmail = document.getElementById("errorEmail");
   const errorBirthday = document.getElementById("errorBirthDate");
   const errorCheckbox1 = document.getElementById("errorCheckbox1");
+  const errorLocation = document.getElementById("errorLocation");
 
   //Utilisation de formData
   let validate = new ValidateClass();
@@ -46,12 +47,6 @@ function launchForm(e) {
   formDataLaunch.forEach((value, key) => {
     validate[key] = value.trim();
   });
-  // formData.forEach((input) => {
-  //   if ((validate.validate = "")) {
-  //     input.setAttribute("data-error-visible", "true");
-  //   }
-  // });
-  console.log(validate);
 
   //Message d'erreur
   errorLastName.textContent = validate.validateLastName;
@@ -64,6 +59,8 @@ function launchForm(e) {
   errorBirthday.style.color = "red";
   errorCheckbox1.textContent = validate.validateCgu;
   errorCheckbox1.style.color = "red";
+  errorLocation.textContent = validate.validateQuantity;
+  errorLocation.style.color = "red";
 }
 // launch validate
 form.addEventListener("submit", (e) => {
@@ -76,7 +73,7 @@ form.addEventListener("submit", (e) => {
       formData.setAttribute("data-error-visible", true);
     } else {
       form.style.display = "none";
-      valueSuccess.innerHTML = `<div style=height:auto; text-align:center>
+      valueSuccess.innerHTML = `<div  text-align:center>
       <p>Fomulaire envoyé!</p>
       <button class="btn-signup modal-btn" >Fermer</button>
       </div>`;

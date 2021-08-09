@@ -87,6 +87,14 @@ export default class ValidateClass {
       this.validate = true;
     }
   }
+  checkQuantity() {
+    if (this.quantity >= 1) {
+      this.validate = false;
+      return "Veuillez choisir une option";
+    } else {
+      this.validate = true;
+    }
+  }
   validate() {
     return false;
   }
